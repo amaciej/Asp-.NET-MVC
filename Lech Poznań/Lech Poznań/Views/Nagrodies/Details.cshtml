@@ -1,0 +1,26 @@
+﻿@model Lech_Poznań.Models.Nagrody
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Nagrody</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nagroda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nagroda)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Nagrody }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Lech_Poznań.Models.Zawodnicy>
+
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+}
+
+
+<p>
+    <h3> @Html.ActionLink("Dodaj nowego zawodnika", "Create")</h3>
+</p>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <th>
+                @Html.DropDownList("Id_Pozycji", null, htmlAttributes: new { @class = "form-control" })
+            </th>
+            <th>
+                @Html.TextBox("Search")<input type="submit" value="Szukaj" class="btn btn-default" />
+            </th>
+        </tr>
+    </table>
+}
+@*@using (Html.BeginForm())
+{    
+    <table>
+        <tr>
+            <th>
+                @Html.TextBox("Search")<input type="submit" value="Szukaj" class="btn btn-default" />
+            </th>
+        </tr>
+    </table>
+
+}*@
+<div class="tylTabeli">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Imię)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwisko)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wiek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pozycje.Pozycja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ilość_występów)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Strzelone_gole)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Asysty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Czyste_konta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Zdjęcie)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imię)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwisko)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wiek)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pozycje.Pozycja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ilość_występów)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Strzelone_gole)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Asysty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Czyste_konta)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.Zdjęcie)" width="100" height="140" />
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id_Zawodnika }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id_Zawodnika })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

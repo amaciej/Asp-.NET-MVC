@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0362d452003f4977a724e1c9a1c0e41a" Name="Diagram1">
+        <EntityTypeShape EntityType="LechPoznanModel.Funckje" Width="1.5" PointX="0.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LechPoznanModel.Nagrody" Width="1.5" PointX="7.875" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="LechPoznanModel.Nagrody_dla_sztabu" Width="1.5" PointX="5.625" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LechPoznanModel.Nagrody_dla_zawodników" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LechPoznanModel.Pozycje" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LechPoznanModel.Sztab" Width="1.5" PointX="3.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LechPoznanModel.Zawodnicy" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="LechPoznanModel.FK_Sztab_Funckje" ManuallyRouted="false" />
+        <AssociationConnector Association="LechPoznanModel.FK_Nagrody_dla_sztabu_Nagrody" ManuallyRouted="false" />
+        <AssociationConnector Association="LechPoznanModel.FK_Nagrody_dla_zawodników_Nagrody" ManuallyRouted="false" />
+        <AssociationConnector Association="LechPoznanModel.FK_Nagrody_dla_sztabu_Sztab" ManuallyRouted="false" />
+        <AssociationConnector Association="LechPoznanModel.FK_Nagrody_dla_zawodników_Zawodnicy" ManuallyRouted="false" />
+        <AssociationConnector Association="LechPoznanModel.FK_Zawodnicy_Pozycje" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

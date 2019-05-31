@@ -1,0 +1,90 @@
+﻿@model Lech_Poznań.Models.Zawodnicy
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Zawodnicy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Imię)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imię)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wiek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wiek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ilość_występów)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ilość_występów)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Strzelone_gole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Strzelone_gole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asysty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asysty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Czyste_konta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Czyste_konta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zdjęcie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zdjęcie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pozycje.Pozycja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pozycje.Pozycja)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Zawodnika }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

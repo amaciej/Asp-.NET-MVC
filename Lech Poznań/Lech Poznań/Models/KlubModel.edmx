@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LechPoznanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Funckje">
+          <Key>
+            <PropertyRef Name="Id_Funkcji" />
+          </Key>
+          <Property Name="Id_Funkcji" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Funkcja" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Nagrody">
+          <Key>
+            <PropertyRef Name="Id_Nagrody" />
+          </Key>
+          <Property Name="Id_Nagrody" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nagroda" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Nagrody dla sztabu">
+          <Key>
+            <PropertyRef Name="IdNSz" />
+          </Key>
+          <Property Name="IdNSz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="Id_Nagrody" Type="int" />
+        </EntityType>
+        <EntityType Name="Nagrody dla zawodników">
+          <Key>
+            <PropertyRef Name="IdNZ" />
+          </Key>
+          <Property Name="IdNZ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Zawodnika" Type="int" />
+          <Property Name="Id_Nagrody" Type="int" />
+        </EntityType>
+        <EntityType Name="Pozycje">
+          <Key>
+            <PropertyRef Name="Id_Pozycji" />
+          </Key>
+          <Property Name="Id_Pozycji" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pozycja" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sztab">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imię" Type="nchar" MaxLength="50" />
+          <Property Name="Nazwisko" Type="nchar" MaxLength="50" />
+          <Property Name="Id_Funkcji" Type="int" />
+          <Property Name="Zdjęcie" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Zawodnicy">
+          <Key>
+            <PropertyRef Name="Id_Zawodnika" />
+          </Key>
+          <Property Name="Id_Zawodnika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imię" Type="nchar" MaxLength="50" />
+          <Property Name="Nazwisko" Type="nchar" MaxLength="50" />
+          <Property Name="Wiek" Type="int" />
+          <Property Name="Id_Pozycji" Type="int" />
+          <Property Name="Ilość występów" Type="int" />
+          <Property Name="Strzelone gole" Type="int" />
+          <Property Name="Asysty" Type="int" />
+          <Property Name="Czyste konta" Type="int" Nullable="false" />
+          <Property Name="Zdjęcie" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Nagrody dla sztabu_Nagrody">
+          <End Role="Nagrody" Type="Self.Nagrody" Multiplicity="0..1" />
+          <End Role="Nagrody dla sztabu" Type="Self.Nagrody dla sztabu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nagrody">
+              <PropertyRef Name="Id_Nagrody" />
+            </Principal>
+            <Dependent Role="Nagrody dla sztabu">
+              <PropertyRef Name="Id_Nagrody" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrody dla sztabu_Sztab">
+          <End Role="Sztab" Type="Self.Sztab" Multiplicity="0..1" />
+          <End Role="Nagrody dla sztabu" Type="Self.Nagrody dla sztabu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sztab">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Nagrody dla sztabu">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrody dla zawodników_Nagrody">
+          <End Role="Nagrody" Type="Self.Nagrody" Multiplicity="0..1" />
+          <End Role="Nagrody dla zawodników" Type="Self.Nagrody dla zawodników" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nagrody">
+              <PropertyRef Name="Id_Nagrody" />
+            </Principal>
+            <Dependent Role="Nagrody dla zawodników">
+              <PropertyRef Name="Id_Nagrody" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrody dla zawodników_Zawodnicy">
+          <End Role="Zawodnicy" Type="Self.Zawodnicy" Multiplicity="0..1" />
+          <End Role="Nagrody dla zawodników" Type="Self.Nagrody dla zawodników" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zawodnicy">
+              <PropertyRef Name="Id_Zawodnika" />
+            </Principal>
+            <Dependent Role="Nagrody dla zawodników">
+              <PropertyRef Name="Id_Zawodnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sztab_Funckje">
+          <End Role="Funckje" Type="Self.Funckje" Multiplicity="0..1" />
+          <End Role="Sztab" Type="Self.Sztab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funckje">
+              <PropertyRef Name="Id_Funkcji" />
+            </Principal>
+            <Dependent Role="Sztab">
+              <PropertyRef Name="Id_Funkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zawodnicy_Pozycje">
+          <End Role="Pozycje" Type="Self.Pozycje" Multiplicity="0..1" />
+          <End Role="Zawodnicy" Type="Self.Zawodnicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pozycje">
+              <PropertyRef Name="Id_Pozycji" />
+            </Principal>
+            <Dependent Role="Zawodnicy">
+              <PropertyRef Name="Id_Pozycji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LechPoznanModelStoreContainer">
+          <EntitySet Name="Funckje" EntityType="Self.Funckje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nagrody" EntityType="Self.Nagrody" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nagrody dla sztabu" EntityType="Self.Nagrody dla sztabu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nagrody dla zawodników" EntityType="Self.Nagrody dla zawodników" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pozycje" EntityType="Self.Pozycje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sztab" EntityType="Self.Sztab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zawodnicy" EntityType="Self.Zawodnicy" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Nagrody dla sztabu_Nagrody" Association="Self.FK_Nagrody dla sztabu_Nagrody">
+            <End Role="Nagrody" EntitySet="Nagrody" />
+            <End Role="Nagrody dla sztabu" EntitySet="Nagrody dla sztabu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrody dla sztabu_Sztab" Association="Self.FK_Nagrody dla sztabu_Sztab">
+            <End Role="Sztab" EntitySet="Sztab" />
+            <End Role="Nagrody dla sztabu" EntitySet="Nagrody dla sztabu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrody dla zawodników_Nagrody" Association="Self.FK_Nagrody dla zawodników_Nagrody">
+            <End Role="Nagrody" EntitySet="Nagrody" />
+            <End Role="Nagrody dla zawodników" EntitySet="Nagrody dla zawodników" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrody dla zawodników_Zawodnicy" Association="Self.FK_Nagrody dla zawodników_Zawodnicy">
+            <End Role="Zawodnicy" EntitySet="Zawodnicy" />
+            <End Role="Nagrody dla zawodników" EntitySet="Nagrody dla zawodników" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sztab_Funckje" Association="Self.FK_Sztab_Funckje">
+            <End Role="Funckje" EntitySet="Funckje" />
+            <End Role="Sztab" EntitySet="Sztab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zawodnicy_Pozycje" Association="Self.FK_Zawodnicy_Pozycje">
+            <End Role="Pozycje" EntitySet="Pozycje" />
+            <End Role="Zawodnicy" EntitySet="Zawodnicy" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LechPoznanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Funckje">
+          <Key>
+            <PropertyRef Name="Id_Funkcji" />
+          </Key>
+          <Property Name="Id_Funkcji" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Funkcja" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Sztabs" Relationship="Self.FK_Sztab_Funckje" FromRole="Funckje" ToRole="Sztab" />
+        </EntityType>
+        <EntityType Name="Nagrody">
+          <Key>
+            <PropertyRef Name="Id_Nagrody" />
+          </Key>
+          <Property Name="Id_Nagrody" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nagroda" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Nagrody_dla_sztabu" Relationship="Self.FK_Nagrody_dla_sztabu_Nagrody" FromRole="Nagrody" ToRole="Nagrody_dla_sztabu" />
+          <NavigationProperty Name="Nagrody_dla_zawodników" Relationship="Self.FK_Nagrody_dla_zawodników_Nagrody" FromRole="Nagrody" ToRole="Nagrody_dla_zawodników" />
+        </EntityType>
+        <EntityType Name="Nagrody_dla_sztabu">
+          <Key>
+            <PropertyRef Name="IdNSz" />
+          </Key>
+          <Property Name="IdNSz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="Id_Nagrody" Type="Int32" />
+          <NavigationProperty Name="Nagrody" Relationship="Self.FK_Nagrody_dla_sztabu_Nagrody" FromRole="Nagrody_dla_sztabu" ToRole="Nagrody" />
+          <NavigationProperty Name="Sztab" Relationship="Self.FK_Nagrody_dla_sztabu_Sztab" FromRole="Nagrody_dla_sztabu" ToRole="Sztab" />
+        </EntityType>
+        <EntityType Name="Nagrody_dla_zawodników">
+          <Key>
+            <PropertyRef Name="IdNZ" />
+          </Key>
+          <Property Name="IdNZ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Zawodnika" Type="Int32" />
+          <Property Name="Id_Nagrody" Type="Int32" />
+          <NavigationProperty Name="Nagrody" Relationship="Self.FK_Nagrody_dla_zawodników_Nagrody" FromRole="Nagrody_dla_zawodników" ToRole="Nagrody" />
+          <NavigationProperty Name="Zawodnicy" Relationship="Self.FK_Nagrody_dla_zawodników_Zawodnicy" FromRole="Nagrody_dla_zawodników" ToRole="Zawodnicy" />
+        </EntityType>
+        <EntityType Name="Pozycje">
+          <Key>
+            <PropertyRef Name="Id_Pozycji" />
+          </Key>
+          <Property Name="Id_Pozycji" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pozycja" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Zawodnicies" Relationship="Self.FK_Zawodnicy_Pozycje" FromRole="Pozycje" ToRole="Zawodnicy" />
+        </EntityType>
+        <EntityType Name="Sztab">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imię" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Id_Funkcji" Type="Int32" />
+          <Property Name="Zdjęcie" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Funckje" Relationship="Self.FK_Sztab_Funckje" FromRole="Sztab" ToRole="Funckje" />
+          <NavigationProperty Name="Nagrody_dla_sztabu" Relationship="Self.FK_Nagrody_dla_sztabu_Sztab" FromRole="Sztab" ToRole="Nagrody_dla_sztabu" />
+        </EntityType>
+        <EntityType Name="Zawodnicy">
+          <Key>
+            <PropertyRef Name="Id_Zawodnika" />
+          </Key>
+          <Property Name="Id_Zawodnika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imię" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Wiek" Type="Int32" />
+          <Property Name="Id_Pozycji" Type="Int32" />
+          <Property Name="Ilość_występów" Type="Int32" />
+          <Property Name="Strzelone_gole" Type="Int32" />
+          <Property Name="Asysty" Type="Int32" />
+          <Property Name="Czyste_konta" Type="Int32" Nullable="false" />
+          <Property Name="Zdjęcie" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Nagrody_dla_zawodników" Relationship="Self.FK_Nagrody_dla_zawodników_Zawodnicy" FromRole="Zawodnicy" ToRole="Nagrody_dla_zawodników" />
+          <NavigationProperty Name="Pozycje" Relationship="Self.FK_Zawodnicy_Pozycje" FromRole="Zawodnicy" ToRole="Pozycje" />
+        </EntityType>
+        <Association Name="FK_Sztab_Funckje">
+          <End Role="Funckje" Type="Self.Funckje" Multiplicity="0..1" />
+          <End Role="Sztab" Type="Self.Sztab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funckje">
+              <PropertyRef Name="Id_Funkcji" />
+            </Principal>
+            <Dependent Role="Sztab">
+              <PropertyRef Name="Id_Funkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrody_dla_sztabu_Nagrody">
+          <End Role="Nagrody" Type="Self.Nagrody" Multiplicity="0..1" />
+          <End Role="Nagrody_dla_sztabu" Type="Self.Nagrody_dla_sztabu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nagrody">
+              <PropertyRef Name="Id_Nagrody" />
+            </Principal>
+            <Dependent Role="Nagrody_dla_sztabu">
+              <PropertyRef Name="Id_Nagrody" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrody_dla_zawodników_Nagrody">
+          <End Role="Nagrody" Type="Self.Nagrody" Multiplicity="0..1" />
+          <End Role="Nagrody_dla_zawodników" Type="Self.Nagrody_dla_zawodników" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nagrody">
+              <PropertyRef Name="Id_Nagrody" />
+            </Principal>
+            <Dependent Role="Nagrody_dla_zawodników">
+              <PropertyRef Name="Id_Nagrody" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrody_dla_sztabu_Sztab">
+          <End Role="Sztab" Type="Self.Sztab" Multiplicity="0..1" />
+          <End Role="Nagrody_dla_sztabu" Type="Self.Nagrody_dla_sztabu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sztab">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Nagrody_dla_sztabu">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrody_dla_zawodników_Zawodnicy">
+          <End Role="Zawodnicy" Type="Self.Zawodnicy" Multiplicity="0..1" />
+          <End Role="Nagrody_dla_zawodników" Type="Self.Nagrody_dla_zawodników" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zawodnicy">
+              <PropertyRef Name="Id_Zawodnika" />
+            </Principal>
+            <Dependent Role="Nagrody_dla_zawodników">
+              <PropertyRef Name="Id_Zawodnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zawodnicy_Pozycje">
+          <End Role="Pozycje" Type="Self.Pozycje" Multiplicity="0..1" />
+          <End Role="Zawodnicy" Type="Self.Zawodnicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pozycje">
+              <PropertyRef Name="Id_Pozycji" />
+            </Principal>
+            <Dependent Role="Zawodnicy">
+              <PropertyRef Name="Id_Pozycji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LechPoznanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Funckjes" EntityType="Self.Funckje" />
+          <EntitySet Name="Nagrodies" EntityType="Self.Nagrody" />
+          <EntitySet Name="Nagrody_dla_sztabus" EntityType="Self.Nagrody_dla_sztabu" />
+          <EntitySet Name="Nagrody_dla_zawodników" EntityType="Self.Nagrody_dla_zawodników" />
+          <EntitySet Name="Pozycjes" EntityType="Self.Pozycje" />
+          <EntitySet Name="Sztabs" EntityType="Self.Sztab" />
+          <EntitySet Name="Zawodnicies" EntityType="Self.Zawodnicy" />
+          <AssociationSet Name="FK_Sztab_Funckje" Association="Self.FK_Sztab_Funckje">
+            <End Role="Funckje" EntitySet="Funckjes" />
+            <End Role="Sztab" EntitySet="Sztabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrody_dla_sztabu_Nagrody" Association="Self.FK_Nagrody_dla_sztabu_Nagrody">
+            <End Role="Nagrody" EntitySet="Nagrodies" />
+            <End Role="Nagrody_dla_sztabu" EntitySet="Nagrody_dla_sztabus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrody_dla_zawodników_Nagrody" Association="Self.FK_Nagrody_dla_zawodników_Nagrody">
+            <End Role="Nagrody" EntitySet="Nagrodies" />
+            <End Role="Nagrody_dla_zawodników" EntitySet="Nagrody_dla_zawodników" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrody_dla_sztabu_Sztab" Association="Self.FK_Nagrody_dla_sztabu_Sztab">
+            <End Role="Sztab" EntitySet="Sztabs" />
+            <End Role="Nagrody_dla_sztabu" EntitySet="Nagrody_dla_sztabus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrody_dla_zawodników_Zawodnicy" Association="Self.FK_Nagrody_dla_zawodników_Zawodnicy">
+            <End Role="Zawodnicy" EntitySet="Zawodnicies" />
+            <End Role="Nagrody_dla_zawodników" EntitySet="Nagrody_dla_zawodników" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zawodnicy_Pozycje" Association="Self.FK_Zawodnicy_Pozycje">
+            <End Role="Pozycje" EntitySet="Pozycjes" />
+            <End Role="Zawodnicy" EntitySet="Zawodnicies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LechPoznanModelStoreContainer" CdmEntityContainer="LechPoznanEntities">
+          <EntitySetMapping Name="Funckjes">
+            <EntityTypeMapping TypeName="LechPoznanModel.Funckje">
+              <MappingFragment StoreEntitySet="Funckje">
+                <ScalarProperty Name="Id_Funkcji" ColumnName="Id_Funkcji" />
+                <ScalarProperty Name="Funkcja" ColumnName="Funkcja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nagrodies">
+            <EntityTypeMapping TypeName="LechPoznanModel.Nagrody">
+              <MappingFragment StoreEntitySet="Nagrody">
+                <ScalarProperty Name="Id_Nagrody" ColumnName="Id_Nagrody" />
+                <ScalarProperty Name="Nagroda" ColumnName="Nagroda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nagrody_dla_sztabus">
+            <EntityTypeMapping TypeName="LechPoznanModel.Nagrody_dla_sztabu">
+              <MappingFragment StoreEntitySet="Nagrody dla sztabu">
+                <ScalarProperty Name="IdNSz" ColumnName="IdNSz" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Id_Nagrody" ColumnName="Id_Nagrody" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nagrody_dla_zawodników">
+            <EntityTypeMapping TypeName="LechPoznanModel.Nagrody_dla_zawodników">
+              <MappingFragment StoreEntitySet="Nagrody dla zawodników">
+                <ScalarProperty Name="IdNZ" ColumnName="IdNZ" />
+                <ScalarProperty Name="Id_Zawodnika" ColumnName="Id_Zawodnika" />
+                <ScalarProperty Name="Id_Nagrody" ColumnName="Id_Nagrody" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pozycjes">
+            <EntityTypeMapping TypeName="LechPoznanModel.Pozycje">
+              <MappingFragment StoreEntitySet="Pozycje">
+                <ScalarProperty Name="Id_Pozycji" ColumnName="Id_Pozycji" />
+                <ScalarProperty Name="Pozycja" ColumnName="Pozycja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sztabs">
+            <EntityTypeMapping TypeName="LechPoznanModel.Sztab">
+              <MappingFragment StoreEntitySet="Sztab">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Imię" ColumnName="Imię" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Id_Funkcji" ColumnName="Id_Funkcji" />
+                <ScalarProperty Name="Zdjęcie" ColumnName="Zdjęcie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zawodnicies">
+            <EntityTypeMapping TypeName="LechPoznanModel.Zawodnicy">
+              <MappingFragment StoreEntitySet="Zawodnicy">
+                <ScalarProperty Name="Id_Zawodnika" ColumnName="Id_Zawodnika" />
+                <ScalarProperty Name="Imię" ColumnName="Imię" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Wiek" ColumnName="Wiek" />
+                <ScalarProperty Name="Id_Pozycji" ColumnName="Id_Pozycji" />
+                <ScalarProperty Name="Ilość_występów" ColumnName="Ilość występów" />
+                <ScalarProperty Name="Strzelone_gole" ColumnName="Strzelone gole" />
+                <ScalarProperty Name="Asysty" ColumnName="Asysty" />
+                <ScalarProperty Name="Czyste_konta" ColumnName="Czyste konta" />
+                <ScalarProperty Name="Zdjęcie" ColumnName="Zdjęcie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

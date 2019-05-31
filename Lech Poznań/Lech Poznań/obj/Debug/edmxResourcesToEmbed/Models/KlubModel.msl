@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LechPoznanModelStoreContainer" CdmEntityContainer="LechPoznanEntities">
+    <EntitySetMapping Name="Funckjes">
+      <EntityTypeMapping TypeName="LechPoznanModel.Funckje">
+        <MappingFragment StoreEntitySet="Funckje">
+          <ScalarProperty Name="Id_Funkcji" ColumnName="Id_Funkcji" />
+          <ScalarProperty Name="Funkcja" ColumnName="Funkcja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nagrodies">
+      <EntityTypeMapping TypeName="LechPoznanModel.Nagrody">
+        <MappingFragment StoreEntitySet="Nagrody">
+          <ScalarProperty Name="Id_Nagrody" ColumnName="Id_Nagrody" />
+          <ScalarProperty Name="Nagroda" ColumnName="Nagroda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nagrody_dla_sztabus">
+      <EntityTypeMapping TypeName="LechPoznanModel.Nagrody_dla_sztabu">
+        <MappingFragment StoreEntitySet="Nagrody dla sztabu">
+          <ScalarProperty Name="IdNSz" ColumnName="IdNSz" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id_Nagrody" ColumnName="Id_Nagrody" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nagrody_dla_zawodników">
+      <EntityTypeMapping TypeName="LechPoznanModel.Nagrody_dla_zawodników">
+        <MappingFragment StoreEntitySet="Nagrody dla zawodników">
+          <ScalarProperty Name="IdNZ" ColumnName="IdNZ" />
+          <ScalarProperty Name="Id_Zawodnika" ColumnName="Id_Zawodnika" />
+          <ScalarProperty Name="Id_Nagrody" ColumnName="Id_Nagrody" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pozycjes">
+      <EntityTypeMapping TypeName="LechPoznanModel.Pozycje">
+        <MappingFragment StoreEntitySet="Pozycje">
+          <ScalarProperty Name="Id_Pozycji" ColumnName="Id_Pozycji" />
+          <ScalarProperty Name="Pozycja" ColumnName="Pozycja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sztabs">
+      <EntityTypeMapping TypeName="LechPoznanModel.Sztab">
+        <MappingFragment StoreEntitySet="Sztab">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Imię" ColumnName="Imię" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Id_Funkcji" ColumnName="Id_Funkcji" />
+          <ScalarProperty Name="Zdjęcie" ColumnName="Zdjęcie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zawodnicies">
+      <EntityTypeMapping TypeName="LechPoznanModel.Zawodnicy">
+        <MappingFragment StoreEntitySet="Zawodnicy">
+          <ScalarProperty Name="Id_Zawodnika" ColumnName="Id_Zawodnika" />
+          <ScalarProperty Name="Imię" ColumnName="Imię" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Wiek" ColumnName="Wiek" />
+          <ScalarProperty Name="Id_Pozycji" ColumnName="Id_Pozycji" />
+          <ScalarProperty Name="Ilość_występów" ColumnName="Ilość występów" />
+          <ScalarProperty Name="Strzelone_gole" ColumnName="Strzelone gole" />
+          <ScalarProperty Name="Asysty" ColumnName="Asysty" />
+          <ScalarProperty Name="Czyste_konta" ColumnName="Czyste konta" />
+          <ScalarProperty Name="Zdjęcie" ColumnName="Zdjęcie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

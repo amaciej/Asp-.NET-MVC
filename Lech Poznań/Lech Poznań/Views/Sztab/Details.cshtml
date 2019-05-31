@@ -1,0 +1,50 @@
+﻿@model Lech_Poznań.Models.Sztab
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sztab</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Imię)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imię)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zdjęcie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zdjęcie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Funckje.Funkcja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Funckje.Funkcja)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

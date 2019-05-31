@@ -1,0 +1,54 @@
+﻿@model Lech_Poznań.Models.Sztab
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>Jestes pewien, że chcesz to usunąć?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Imię)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imię)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zdjęcie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zdjęcie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Funckje.Funkcja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Funckje.Funkcja)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> 
+            <h4>@Html.ActionLink("Back to List", "Index")</h4>
+        </div>
+    }
+</div>

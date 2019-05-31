@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>LECH POZNAŃ</h1>
+    <p class="lead">Nieoficjana strona poświęcona polskiemu klubowi z Poznania.</p>
+    <p><a href="https://www.lechpoznan.pl" class="btn btn-primary btn-lg">Oficjalna strona klubu &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Zawodnicy", "Index", "Zawodnicy")</h2>
+        <p>
+            Zawodnicy aktualnie wystepujący w klubie
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Sztab szkoleniowy", "Index", "Sztab")</h2>
+        <p>Sztab szkolenowy oraz ludzie związani z klubem</p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Nagrody dla zawodników", "Index", "Nagrody_dla_zawodników")</h2>
+        <p> </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Nagrody dla sztabu", "Index", "Nagrody_dla_sztabu")</h2>
+        <p> </p>
+    </div>
+</div>
