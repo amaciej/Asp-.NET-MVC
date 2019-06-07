@@ -57,12 +57,15 @@
             </td>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Usuń", "Delete", new { id = item.ID })
             </td>
         </tr>
     }
 
 </table>
+</div>
+<div>
+    <h4>@Html.ActionLink("Pełna lista", "Index")</h4>
 </div>
 

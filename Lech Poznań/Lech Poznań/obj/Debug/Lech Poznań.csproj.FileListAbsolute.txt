@@ -81,3 +81,4 @@ C:\Users\Adam\Documents\sem. 6\Projektowanie Interfejsów\Lech Poznań\Lech Pozn
 C:\Users\Adam\Documents\sem. 6\Projektowanie Interfejsów\Lech Poznań\Lech Poznań\obj\Debug\Lech Poznań.csproj.CopyComplete
 C:\Users\Adam\Documents\sem. 6\Projektowanie Interfejsów\Lech Poznań\Lech Poznań\obj\Debug\Lech Poznań.dll
 C:\Users\Adam\Documents\sem. 6\Projektowanie Interfejsów\Lech Poznań\Lech Poznań\obj\Debug\Lech Poznań.pdb
+C:\Users\Adam\Documents\sem. 6\Projektowanie Interfejsów\Lech Poznań\Lech Poznań\obj\Debug\Lech Poznań.csprojAssemblyReference.cache
